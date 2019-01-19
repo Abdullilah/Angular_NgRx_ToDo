@@ -1,0 +1,16 @@
+<div class="container__list">
+  <h2>{{title}}</h2>
+  <div class="container__list__card" [ngClass]="className" *ngFor="let task of tasks">
+    <p>Title: {{task.title}}</p>
+    <p>Description: {{task.description}}</p>
+    <p>Department: {{task.department}}</p>
+    <p>Employee ID: {{task.employeeID}}</p>
+    <p>Status:
+      <select [value]="task.status">
+        <option value="Submitted">Submitted</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Fixed">Fixed</option>
+      </select>
+    </p>
+  </div>
+</div>
