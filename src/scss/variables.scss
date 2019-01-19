@@ -1,5 +1,18 @@
+/* breakpoints */
+$screen--xs: 400px;
+$screen--sm: 600px;
+$screen--md: 768px;
+$screen--lg: 992px;
+$screen--xl: 1200px;
+$screen--xxl: 1366px;
+
+/* colors */
 $main-color: #c6a869;
-$background-color: #dddddd;
-$light-gray-color: #a0a0a0;
+$background-color: #ececec;
+$light-gray-color: #8c8c8c;
+$card-color: #e2e1e1;
+$nav-color: #333333;
+
+/* shadow */
 $box-shadow: 10px 10px 21px -8px rgba(0,0,0,0.6);
 

@@ -18,4 +18,8 @@ export class TaskComponent implements OnInit {
     this.className = 'container__list__card--' + this.column;
   }
 
+  deleteTask(task: Task): void {
+    console.log(task);
+  }
+
 }

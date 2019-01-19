@@ -6,16 +6,37 @@ html, body {
   background-color: $background-color;
   font-family: Futura PT wf,Helvetica,Arial,sans-serif;
 
-  nav {
+  .nav {
     height: 60px;
-    background-color: #333333;
+    background-color: $nav-color;
     display: flex;
     align-items: center;
     padding: 5px 40px;
     justify-content: space-between;
 
-    h1 {
+    .title {
       color: $main-color;
+      cursor: help;
+    }
+
+    .pop-up {
+      color: #c6a869;
+      border: 5px solid $main-color;
+      padding: 20px 35px;
+      position: absolute;
+      left: 141px;
+      top: -190px;
+      background-color: $nav-color;
+      transform: rotate(-90deg);
+      transition: all ease-in-out 0.5s;
+      border-radius: 0 30px 30px;
+      max-width: 210px;
+      font-size: 18px;
+    }
+
+    .logo:hover .pop-up {
+      top: 45px;
+      transform: rotate(0);
     }
 
     a {
@@ -36,7 +57,12 @@ html, body {
   .container {
     padding: 20px;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
+    @media (min-width: $screen--lg) {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
 
     &__list {
       margin: 0 20px;
@@ -47,21 +73,22 @@ html, body {
 
       &__card {
         margin: 20px 10px;
-        border: 4px solid $main-color;
         padding: 5px 20px;
         border-radius: 0 30px 30px;
         transition: all ease-in-out 0.3s;
+        background-color: $card-color;
+        position: relative;
 
         &--first {
-          background-color: #e6c3c3;
+          border: 5px solid #e88383;
         }
 
         &--second {
-          background-color: #c4e6c3;
+          border: 5px solid #8386e8;
         }
 
         &--third {
-          background-color: #c4c3e6;
+          border: 5px solid #83e88f;
         }
 
         &:hover {
@@ -70,6 +97,10 @@ html, body {
 
         p {
           margin: 10px 0;
+
+          span.bold {
+            font-weight: bold;
+          }
         }
       }
     }

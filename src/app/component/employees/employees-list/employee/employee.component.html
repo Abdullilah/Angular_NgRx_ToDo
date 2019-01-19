@@ -1,12 +1,14 @@
 <div class="container__list">
   <h2>{{title}}</h2>
   <div class="container__list__card" [ngClass]="className" *ngFor="let employee of employees">
-    <p>Name: {{employee.firstName}}</p>
-    <p>Surname: {{employee.lastName}}</p>
-    <p>Tasks IDs:
-      <span *ngFor="let taskID of employee.tasksIDs">
-          {{taskID}}
-        </span>
+    <p><span class="bold">Name:</span> {{employee.firstName}}</p>
+    <p><span class="bold">Surname:</span> {{employee.lastName}}</p>
+    <p><span class="bold">Tasks IDs: </span>
+      <span *ngFor="let taskID of employee.tasksIDs; let i = index">
+        {{taskID}}
+        <span *ngIf="i !== employee.tasksIDs.length-1"> / </span>
+      </span>
+      <span *ngIf="!employee.tasksIDs.length" class="bold"> Free</span>
     </p>
   </div>
 </div>

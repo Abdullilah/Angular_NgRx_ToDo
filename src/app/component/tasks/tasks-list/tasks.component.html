@@ -3,3 +3,33 @@
   <app-task title="In Progress Tasks" [tasks]="inProgressTasks" column="second"></app-task>
   <app-task title="Fixed Tasks" [tasks]="fixedTasks" column="third"></app-task>
 </section>
+<section class="container">
+  <form (submit)="addTask($event, title, desciption, department, employee)" class="add-list">
+    <h2>Add a New Task</h2>
+    <div class="add-list__field">
+      <label for="title">Title</label>
+      <input type="text" placeholder="The title of the task" id="title" #title required="required">
+    </div>
+    <div class="add-list__field">
+      <label for="description">Description</label>
+      <input type="text" placeholder="The description of the task" id="description" #desciption required="required">
+    </div>
+    <div class="add-list__field">
+      <label>Department</label>
+      <select #department>
+        <option value="Front-end">Front-end</option>
+        <option value="Back-end">Back-end</option>
+        <option value="designing">Designing</option>
+      </select>
+    </div>
+    <div class="add-list__field">
+      <label>Employee</label>
+      <select #employee>
+        <option>Employee 1</option>
+        <option>Employee 2</option>
+        <option>Employee 3</option>
+      </select>
+    </div>
+    <button>Add Task</button>
+  </form>
+</section>
