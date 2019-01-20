@@ -1,16 +1,30 @@
 import { Injectable } from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {Task} from '../models/task';
-import {tasksMock} from '../mock-data/tasks-mock';
+import {Observable} from 'rxjs';
+import {Status, Task} from '../models/task';
+import {Store, select} from '@ngrx/store';
+import {AppState} from '../store/app.state';
+import {AddTask, DeleteTask, EditTask} from '../store/actions/tasks.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TasksService {
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   getAllTasks$(): Observable<Task[]> {
-    return of(tasksMock);
+    return this.store.pipe(select('tasks'));
+  }
+
+  addNewTask(task: Task): void {
+    this.store.dispatch(new AddTask(task));
+  }
+
+  editTask(id: number, status: Status.CodeEnum): void {
+    this.store.dispatch(new EditTask({id: id, status: status}));
+  }
+
+  deleteTask(id: number): void {
+    this.store.dispatch(new DeleteTask(id));
   }
 }

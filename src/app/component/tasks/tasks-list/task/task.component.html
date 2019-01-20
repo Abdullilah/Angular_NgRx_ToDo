@@ -1,12 +1,12 @@
 <div class="container__list">
-  <h2>{{title}}</h2>
+  <h2>Tasks {{title}}</h2>
   <div class="container__list__card" [ngClass]="className" *ngFor="let task of tasks">
     <p><span class="bold">Title:</span> {{task.title}}</p>
     <p><span class="bold">Description:</span> {{task.description}}</p>
     <p><span class="bold">Department:</span> {{task.department}}</p>
     <p><span class="bold">Employee ID:</span> {{task.employeeID}}</p>
     <p><span class="bold">Status: </span>
-      <select [value]="task.status">
+      <select [value]="task.status" #status (change)="editTask(task.id, status.value)">
         <option value="Submitted">Submitted</option>
         <option value="In Progress">In Progress</option>
         <option value="Fixed">Fixed</option>
@@ -14,4 +14,5 @@
     </p>
     <button class="delete" (click)="deleteTask(task)">Delete</button>
   </div>
+  <p class="empty" *ngIf="!tasks.length">There are no Tasks {{title}}</p>
 </div>

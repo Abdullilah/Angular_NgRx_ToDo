@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Task} from '../../../../models/task';
+import {Status, Task} from '../../../../models/task';
+import {TasksService} from '../../../../services/tasks.service';
 
 @Component({
   selector: 'app-task',
@@ -12,14 +13,20 @@ export class TaskComponent implements OnInit {
   @Input() column: string;
   @Input() tasks: Task[];
   className: string;
-  constructor() { }
+
+  constructor(private tasksService: TasksService) {
+  }
 
   ngOnInit() {
     this.className = 'container__list__card--' + this.column;
   }
 
   deleteTask(task: Task): void {
-    console.log(task);
+    this.tasksService.deleteTask(task.id);
+  }
+
+  editTask(id: number, status: Status.CodeEnum): void {
+    this.tasksService.editTask(id, status);
   }
 
 }

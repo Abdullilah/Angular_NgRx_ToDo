@@ -3,7 +3,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: $background-color;
+  background-image: url('/../assets/images/background.jpg');
   font-family: Futura PT wf,Helvetica,Arial,sans-serif;
 
   .nav {
@@ -78,31 +78,43 @@ html, body {
         transition: all ease-in-out 0.3s;
         background-color: $card-color;
         position: relative;
+        box-shadow: $box-shadow;
 
         &--first {
-          border: 5px solid #e88383;
+          @include card-effect($light-red-color);
         }
 
         &--second {
-          border: 5px solid #8386e8;
+          @include card-effect($light-blue-color);
         }
 
         &--third {
-          border: 5px solid #83e88f;
-        }
-
-        &:hover {
-          box-shadow: $box-shadow;
+          @include card-effect($light-green-color);
         }
 
         p {
           margin: 10px 0;
-
-          span.bold {
-            font-weight: bold;
-          }
         }
       }
     }
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .delete {
+    color: #f00;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .empty {
+    color: #e88383;
+    font-size: 20px;
   }
 }

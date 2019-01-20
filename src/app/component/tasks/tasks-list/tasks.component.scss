@@ -1,9 +1,15 @@
+@import '../../../../scss/variables';
+
 .add-list {
   border: 5px solid #ccc;
   border-radius: 6px;
   padding: 20px 30px;
   background-color: #dddddd;
-  min-width: 360px;
+  min-width: 270px;
+  margin: 0 auto;
+  @media (min-width: $screen--sm) {
+    min-width: 360px;
+  }
 
   h2 {
     color: #e88383;
@@ -23,6 +29,10 @@
     input, select {
       padding: 7px;
       width: 50%;
+    }
+
+    select {
+      border-color: #a9a9a9;
     }
   }
 

@@ -1,14 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Employee} from '../../../models/employee';
 import {EmployeesService} from '../../../services/employees.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
   styleUrls: ['./employees.component.scss']
 })
-export class EmployeesComponent implements OnInit {
+export class EmployeesComponent implements OnInit, OnDestroy {
 
+  allEmployees$: Observable<Employee[]>;
   frontendEmployees: Employee[] = [];
   backendEmployees: Employee[] = [];
   designerEmployees: Employee[] = [];
@@ -17,7 +19,8 @@ export class EmployeesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.employeesService.getAllEmployees$().subscribe(employees => {
+    this.allEmployees$ = this.employeesService.getAllEmployees$();
+    this.allEmployees$.subscribe(employees => {
       employees.map(employee => {
         switch (employee.department) {
           case 'Front-end':
@@ -34,4 +37,7 @@ export class EmployeesComponent implements OnInit {
     })
   }
 
+  ngOnDestroy() {
+    this.allEmployees$.subscribe();
+  }
 }
