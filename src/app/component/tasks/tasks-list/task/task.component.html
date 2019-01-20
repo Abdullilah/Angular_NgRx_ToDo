@@ -1,6 +1,7 @@
 <div class="container__list">
   <h2>Tasks {{title}}</h2>
   <div class="container__list__card" [ngClass]="className" *ngFor="let task of tasks">
+    <p><span class="bold">Task ID:</span> {{task.id}}</p>
     <p><span class="bold">Title:</span> {{task.title}}</p>
     <p><span class="bold">Description:</span> {{task.description}}</p>
     <p><span class="bold">Department:</span> {{task.department}}</p>

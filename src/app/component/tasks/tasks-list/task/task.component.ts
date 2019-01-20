@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Status, Task} from '../../../../models/task';
 import {TasksService} from '../../../../services/tasks.service';
+import {EmployeesService} from '../../../../services/employees.service';
 
 @Component({
   selector: 'app-task',
@@ -14,7 +15,7 @@ export class TaskComponent implements OnInit {
   @Input() tasks: Task[];
   className: string;
 
-  constructor(private tasksService: TasksService) {
+  constructor(private tasksService: TasksService, private employeesService: EmployeesService) {
   }
 
   ngOnInit() {
@@ -23,6 +24,7 @@ export class TaskComponent implements OnInit {
 
   deleteTask(task: Task): void {
     this.tasksService.deleteTask(task.id);
+    this.employeesService.deleteEmployeeTask(task);
   }
 
   editTask(id: number, status: Status.CodeEnum): void {

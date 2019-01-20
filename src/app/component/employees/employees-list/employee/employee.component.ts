@@ -12,7 +12,9 @@ export class EmployeeComponent implements OnInit {
   @Input() column: string;
   @Input() employees: Employee[];
   className: string;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
     this.className = 'container__list__card--' + this.column;

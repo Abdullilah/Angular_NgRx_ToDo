@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Task} from '../../../models/task';
 import {TasksService} from '../../../services/tasks.service';
-import {Employee} from '../../../models/employee';
 import {Observable} from 'rxjs';
 import {EmployeesService} from '../../../services/employees.service';
 
@@ -43,8 +42,9 @@ export class TasksComponent implements OnInit, OnDestroy {
 
   addTask(e, title, description, department, employeeID): void {
     e.preventDefault();
+    console.log(employeeID);
     const newTask: Task = {
-      id: Math.random(),
+      id: Math.round(Math.random()*1000),
       title: title,
       description: description,
       department: department,
@@ -52,6 +52,7 @@ export class TasksComponent implements OnInit, OnDestroy {
       employeeID: parseInt(employeeID, 10)
     };
     this.tasksService.addNewTask(newTask);
+    this.employeesService.addEmployeeTasks(newTask);
   }
 
   get getAllEmployees$() {

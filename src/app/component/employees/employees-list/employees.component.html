@@ -1,5 +1,27 @@
 <section class="container">
-  <app-employee title="Front-end Employees" [employees]="frontendEmployees" column="first"></app-employee>
-  <app-employee title="Back-end Employees" [employees]="backendEmployees" column="second"></app-employee>
-  <app-employee title="Designing Employees" [employees]="designerEmployees" column="third"></app-employee>
+  <app-employee title="Front-end" [employees]="frontendEmployees" column="first"></app-employee>
+  <app-employee title="Back-end" [employees]="backendEmployees" column="second"></app-employee>
+  <app-employee title="Designer" [employees]="designerEmployees" column="third"></app-employee>
+</section>
+<section class="container">
+  <form (submit)="addEmployee($event, firstname.value, lastName.value, department.value)" class="add-list">
+    <h2>Add a New Employee</h2>
+    <div class="add-list__field">
+      <label for="firstname">First name</label>
+      <input type="text" placeholder="First name" id="firstname" #firstname required="required">
+    </div>
+    <div class="add-list__field">
+      <label for="lastName">Last name</label>
+      <input type="text" placeholder="Last name" id="lastName" #lastName required="required">
+    </div>
+    <div class="add-list__field">
+      <label>Department</label>
+      <select #department>
+        <option value="Front-end">Front-end</option>
+        <option value="Back-end">Back-end</option>
+        <option value="Designer">Designing</option>
+      </select>
+    </div>
+    <button>Add Employee</button>
+  </form>
 </section>

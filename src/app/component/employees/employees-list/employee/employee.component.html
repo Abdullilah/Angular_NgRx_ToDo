@@ -1,6 +1,7 @@
 <div class="container__list">
   <h2>{{title}}</h2>
   <div class="container__list__card" [ngClass]="className" *ngFor="let employee of employees">
+    <p><span class="bold">Employee ID:</span> {{employee.id}}</p>
     <p><span class="bold">Name:</span> {{employee.firstName}}</p>
     <p><span class="bold">Surname:</span> {{employee.lastName}}</p>
     <p><span class="bold">Tasks IDs: </span>

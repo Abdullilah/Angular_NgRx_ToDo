@@ -11,17 +11,23 @@ export function tasksReducer(state = initialState, action: TaskActions) {
       return [...state, action.payload];
 
     case ActionTypes.Delete_Task:
-      const tasks = state;
       state.map((task, index) => {
         if (task.id === action.payload) {
-          tasks.splice(index, 1);
+          state.splice(index, 1);
         }
       });
-      return [...tasks];
+      return [...state];
 
     case ActionTypes.Edit_Task:
-      console.log(action.payload);
-      return state;
+      state.map((task, index) => {
+        if (task.id === action.payload.id) {
+          state[index] = {
+            ...state[index],
+            status: action.payload.status
+          };
+        }
+      });
+      return [...state];
 
     default:
       return state;
