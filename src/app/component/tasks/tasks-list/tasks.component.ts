@@ -42,7 +42,6 @@ export class TasksComponent implements OnInit, OnDestroy {
 
   addTask(e, title, description, department, employeeID): void {
     e.preventDefault();
-    console.log(employeeID);
     const newTask: Task = {
       id: Math.round(Math.random()*1000),
       title: title,
@@ -55,7 +54,7 @@ export class TasksComponent implements OnInit, OnDestroy {
     this.employeesService.addEmployeeTasks(newTask);
   }
 
-  get getAllEmployees$() {
+  get getAllEmployees$(): Observable<Employee[]> {
     return this.employeesService.getAllEmployees$();
   }
 
